@@ -1,3 +1,5 @@
+import 'package:analytic_invest/features/authentication/presentation/pages/signin_page.dart';
+import 'package:analytic_invest/features/register/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
             title: 'Analytic Invest',
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            home: const MainPage(),
+            home: const RegisterPage(),
           ),
         );
       },
