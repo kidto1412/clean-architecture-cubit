@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:analytic_invest/core/theme/theme.dart';
 import 'package:analytic_invest/global/widgets/CustomTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,59 +19,99 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: GestureDetector(
-              onTap: _showImageSourceDialog,
-              child: CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.grey[300],
-                backgroundImage:
-                    _imageFile != null ? FileImage(_imageFile!) : null,
-                child: _imageFile == null
-                    ? Icon(Icons.camera_alt, size: 40, color: Colors.white70)
-                    : null,
+          child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(20.0),
+              child: Text(
+                'Register',
+                style: blackTextStyle,
               ),
             ),
-          ),
-          CustomTextField(
-            label: 'Fullname',
-            hint: 'Input Fullname',
-            iconName: Icons.email_outlined,
-          ),
-          CustomTextField(
-            label: 'Username / Email',
-            hint: 'Input username / email',
-            iconName: Icons.email_outlined,
-          ),
-          CustomTextField(
-            label: 'Password',
-            hint: 'Input password',
-            obscureText: true,
-            iconName: Icons.key,
-          ),
-          CustomTextField(
-            label: 'Confirm Password',
-            hint: 'Input confirm password',
-            obscureText: true,
-            iconName: Icons.key,
-          ),
-          Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Register',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+            Center(
+              child: GestureDetector(
+                onTap: _showImageSourceDialog,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.grey[300],
+                  backgroundImage:
+                      _imageFile != null ? FileImage(_imageFile!) : null,
+                  child: _imageFile == null
+                      ? Icon(Icons.camera_alt, size: 40, color: Colors.white70)
+                      : null,
                 ),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              )),
-        ],
+              ),
+            ),
+            CustomTextField(
+              label: 'Fullname',
+              hint: 'Input Fullname',
+              iconName: Icons.email_outlined,
+            ),
+            CustomTextField(
+              label: 'Username / Email',
+              hint: 'Input username / email',
+              iconName: Icons.email_outlined,
+            ),
+            CustomTextField(
+              label: 'Password',
+              hint: 'Input password',
+              obscureText: true,
+              iconName: Icons.key,
+            ),
+            CustomTextField(
+              label: 'Confirm Password',
+              hint: 'Input confirm password',
+              obscureText: true,
+              iconName: Icons.key,
+            ),
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                )),
+            Container(
+              margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(child: Divider(thickness: 1)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child:
+                        Text("Atau", style: TextStyle(color: Colors.black54)),
+                  ),
+                  Expanded(child: Divider(thickness: 1)),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Text("Sudah punya akun?"),
+                  ),
+                  Container(
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('Masuk',
+                              style: TextStyle(color: Colors.blue))))
+                ],
+              ),
+            ),
+          ],
+        ),
       )),
     );
   }

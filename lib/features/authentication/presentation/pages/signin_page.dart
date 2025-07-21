@@ -1,4 +1,5 @@
 import 'package:analytic_invest/core/theme/theme.dart';
+import 'package:analytic_invest/features/register/presentation/pages/register_page.dart';
 import 'package:analytic_invest/global/widgets/CustomTextField.dart';
 import 'package:flutter/material.dart';
 
@@ -88,7 +89,10 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                     child: TextButton(
                         onPressed: () {
-                          ;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegisterPage()));
                         },
                         child: Text('Daftar',
                             style: TextStyle(color: Colors.blue))))

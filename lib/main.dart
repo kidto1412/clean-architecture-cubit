@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             title: 'Analytic Invest',
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            home: const RegisterPage(),
+            home: const LoginPage(),
           ),
         );
       },
