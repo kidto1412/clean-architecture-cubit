@@ -1,6 +1,6 @@
 class AppConstants {
   // API Base URLs
-  static const String baseUrl = 'https://api.analyticinvest.com';
+  static const String baseUrl = 'http://localhost:3000/api';
   static const String apiVersion = '/v1';
 
   // Storage Keys

@@ -13,6 +13,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController username = TextEditingController();
+    TextEditingController password = TextEditingController();
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -33,11 +35,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           CustomTextField(
+            controllerl: username,
             label: 'Username / Email',
             hint: 'Input username / email',
             iconName: Icons.email_outlined,
           ),
           CustomTextField(
+            controllerl: password,
             label: 'Password',
             hint: 'Input password',
             obscureText: true,

@@ -1,4 +1,5 @@
 import 'package:analytic_invest/core/errors/failures.dart';
+import 'package:analytic_invest/features/register/data/models/user_model.dart';
 import 'package:analytic_invest/features/register/domain/entities/user.dart';
 import 'package:dartz/dartz.dart';
 

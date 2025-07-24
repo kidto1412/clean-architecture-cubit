@@ -1,3 +1,9 @@
+import 'package:analytic_invest/features/register/data/datasources/local/register_local_source.dart';
+import 'package:analytic_invest/features/register/data/datasources/remote/register_remote.dart';
+import 'package:analytic_invest/features/register/data/repositories/register_repository_impl.dart';
+import 'package:analytic_invest/features/register/domain/repositories/register_repository.dart';
+import 'package:analytic_invest/features/register/domain/usecase/register_usecase.dart';
+import 'package:analytic_invest/features/register/presentation/cubit/register_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
@@ -23,13 +29,23 @@ Future<void> init() async {
   sl.registerFactory(() => HomeCubit());
   sl.registerFactory(() => ProfileCubit());
   sl.registerFactory(() => MainCubit());
+  sl.registerFactory(() => RegisterCubit(registerUseCase: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => GetAnalytics(sl()));
+  sl.registerLazySingleton(() => Register(sl()));
 
   // Repository
   sl.registerLazySingleton<AnalyticsRepository>(
     () => AnalyticsRepositoryImpl(
+      remoteDataSource: sl(),
+      localDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<RegisterRepository>(
+    () => RegisterRepositoryImpl(
       remoteDataSource: sl(),
       localDataSource: sl(),
       networkInfo: sl(),
@@ -42,6 +58,13 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<AnalyticsLocalDataSource>(
     () => AnalyticsLocalDataSourceImpl(sharedPreferences: sl()),
+  );
+
+  sl.registerLazySingleton<RegisterLocalSource>(
+    () => RegisterLocalSourceImpl(prefs: sl()),
+  );
+  sl.registerLazySingleton<RegisterRemote>(
+    () => RegisterService(sl()),
   );
 
   // Core

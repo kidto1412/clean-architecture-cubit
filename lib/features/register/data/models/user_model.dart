@@ -31,4 +31,30 @@ class RegisterModel extends User {
       "email": email,
     };
   }
+
+  factory RegisterModel.fromEntity(User entity) {
+    return RegisterModel(
+      id: entity.id,
+      name: entity.name,
+      username: entity.username,
+      password: entity.password,
+      email: entity.email,
+      photo_profile: entity.photo_profile ?? "",
+      created_at: DateTime.parse(entity.created_at.toString() ?? ''),
+      updated_at: DateTime.parse(entity.updated_at.toString() ?? ''),
+    );
+  }
+
+  User toEntity() {
+    return User(
+      id: id,
+      name: name,
+      username: username,
+      password: password,
+      email: email,
+      photo_profile: photo_profile,
+      created_at: created_at,
+      updated_at: updated_at,
+    );
+  }
 }

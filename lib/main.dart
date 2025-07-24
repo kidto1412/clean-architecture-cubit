@@ -1,4 +1,5 @@
 import 'package:analytic_invest/features/authentication/presentation/pages/signin_page.dart';
+import 'package:analytic_invest/features/register/presentation/cubit/register_cubit.dart';
 import 'package:analytic_invest/features/register/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider<ProfileCubit>(
               create: (context) => di.sl<ProfileCubit>(),
+            ),
+            BlocProvider<RegisterCubit>(
+              create: (context) => di.sl<RegisterCubit>(),
             ),
           ],
           child: MaterialApp(
